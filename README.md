@@ -129,3 +129,7 @@ This project is dual-licensed under the GPLv3 for FOSS projects as well as a com
 # Cryptomator AMOLED Black patcher
 This is a script that makes Cryptomator’s theme completely black for free.
 >>>>>>> fcd64bcc6300f023ba3625d41e2381b4355dd85d
+
+
+# Credits
+[Cryptomator](https://github.com/cryptomator/cryptomator)
