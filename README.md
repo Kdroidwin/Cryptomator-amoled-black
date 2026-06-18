@@ -1,5 +1,7 @@
 # Cryptomator AMOLED Black
 
+### At your own risk.
+
 Files:
 - CryptomatorAmoledBlackPatcher.exe : single-file executable patcher
 - CryptomatorAmoledBlackPatcher.ps1 : readable PowerShell source
