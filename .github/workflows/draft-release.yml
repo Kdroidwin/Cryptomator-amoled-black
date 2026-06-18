@@ -25,14 +25,14 @@ jobs:
     needs: get-version
     if: needs.get-version.outputs.versionType != 'unknown'
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
         with:
           fetch-depth: 0
       - name: Check the git tag is signed
         run: git cat-file -p "${GITHUB_REF_NAME}" | grep "BEGIN SSH SIGNATURE"
       - name: Check the git tag is on release or main branch
         run: git branch -r --contains "${GITHUB_REF_NAME}" | grep -E '^\s*origin/(main|release/.*)\s*$'
-      - uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5.2.0
+      - uses: actions/setup-java@ad2b38190b15e4d6bdf0c97fb4fca8412226d287 # v5.3.0
         with:
           distribution: ${{ env.JAVA_DIST }}
           java-version: ${{ env.JAVA_VERSION }}
@@ -42,7 +42,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
       - name: Draft a release
-        uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
+        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
         with:
           draft: true
           discussion_category_name: releases
@@ -60,7 +60,7 @@ jobs:
           GPG_PRIVATE_KEY: ${{ secrets.RELEASES_GPG_PRIVATE_KEY }}
           GPG_PASSPHRASE: ${{ secrets.RELEASES_GPG_PASSPHRASE }}
       - name: Publish asc on GitHub Releases
-        uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
+        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
         with:
           draft: true
           fail_on_unmatched_files: true
@@ -112,7 +112,7 @@ jobs:
       SEMVER: ${{ needs.get-version.outputs.semVerStr }}
       GH_TOKEN: ${{ secrets.CRYPTOBOT_RELEASE_TOKEN }}
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
       - name: Compute source tarball SHA256
         id: src-sha256
         run: |
